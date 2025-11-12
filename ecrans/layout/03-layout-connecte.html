@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Connecté - Conformate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-black min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 border-r border-gray-300 p-4 hidden md:block">
+      <nav class="space-y-2">
+        <a
+          href="../wireframe/11-tableau-de-bord.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Tableau de bord</a
+        >
+        <a
+          href="../wireframe/13-mes-elements.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Mes éléments</a
+        >
+        <a
+          href="../wireframe/14-favoris.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Favoris</a
+        >
+        <a
+          href="../wireframe/15-parametres.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Paramètres</a
+        >
+      </nav>
+    </aside>
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col">
+      <header class="border-b border-gray-300">
+        <div
+          class="container mx-auto px-4 py-4 flex justify-between items-center"
+        >
+          <a
+            href="../wireframe/11-tableau-de-bord.html"
+            class="text-xl font-bold underline hover:bg-gray-100 px-2 py-1 rounded"
+            >Conformate</a
+          >
+          <div class="flex items-center space-x-4">
+            <input
+              type="text"
+              placeholder="Rechercher..."
+              class="border border-gray-300 px-2 py-1 rounded"
+            />
+            <span class="text-xl">🔔</span>
+            <details class="relative">
+              <summary
+                class="cursor-pointer underline hover:bg-gray-100 px-2 py-1 rounded"
+              >
+                👤
+              </summary>
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded shadow-lg"
+              >
+                <a
+                  href="../wireframe/16-profil.html"
+                  class="block px-4 py-2 underline hover:bg-gray-100"
+                  >Profil</a
+                >
+                <a
+                  href="../wireframe/15-parametres.html"
+                  class="block px-4 py-2 underline hover:bg-gray-100"
+                  >Paramètres</a
+                >
+                <a
+                  href="../wireframe/04-accueil.html"
+                  class="block px-4 py-2 underline hover:bg-gray-100"
+                  >Déconnexion</a
+                >
+              </div>
+            </details>
+          </div>
+        </div>
+      </header>
+      <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Contenu de la page ici -->
+        <p class="text-gray-600">Contenu principal de la page.</p>
+      </main>
+      <footer class="border-t border-gray-300">
+        <div class="container mx-auto px-4 py-4 text-center">
+          <a
+            href="../wireframe/08-aide.html"
+            class="underline hover:bg-gray-100 px-2 py-1 rounded"
+            >Centre d’aide</a
+          >
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

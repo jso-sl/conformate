@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil - Conformate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-black min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 border-r border-gray-300 p-4 hidden md:block">
+      <nav class="space-y-2">
+        <a
+          href="11-tableau-de-bord.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Tableau de bord</a
+        >
+        <a
+          href="13-mes-elements.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Mes éléments</a
+        >
+        <a
+          href="14-favoris.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Favoris</a
+        >
+        <a
+          href="15-parametres.html"
+          class="block underline hover:bg-gray-100 px-2 py-1 rounded"
+          >Paramètres</a
+        >
+      </nav>
+    </aside>
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col">
+      <header class="border-b border-gray-300">
+        <div
+          class="container mx-auto px-4 py-4 flex justify-between items-center"
+        >
+          <a
+            href="11-tableau-de-bord.html"
+            class="text-xl font-bold underline hover:bg-gray-100 px-2 py-1 rounded"
+            >Conformate</a
+          >
+          <div class="flex items-center space-x-4">
+            <input
+              type="text"
+              placeholder="Rechercher..."
+              class="border border-gray-300 px-2 py-1 rounded"
+            />
+            <span class="text-xl">🔔</span>
+            <details class="relative">
+              <summary
+                class="cursor-pointer underline hover:bg-gray-100 px-2 py-1 rounded"
+              >
+                👤
+              </summary>
+              <div
+                class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded shadow-lg"
+              >
+                <a
+                  href="16-profil.html"
+                  class="block px-4 py-2 underline hover:bg-gray-100"
+                  >Profil</a
+                >
+                <a
+                  href="15-parametres.html"
+                  class="block px-4 py-2 underline hover:bg-gray-100"
+                  >Paramètres</a
+                >
+                <a
+                  href="04-accueil.html"
+                  class="block px-4 py-2 underline hover:bg-gray-100"
+                  >Déconnexion</a
+                >
+              </div>
+            </details>
+          </div>
+        </div>
+      </header>
+      <main class="flex-grow container mx-auto px-4 py-8 max-w-md">
+        <h1 class="text-2xl font-bold mb-4">Profil</h1>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium">Nom</label>
+            <input
+              type="text"
+              id="name"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+              value="Utilisateur"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+              value="user@example.com"
+            />
+          </div>
+          <div>
+            <label for="avatar" class="block text-sm font-medium"
+              >Photo de profil</label
+            >
+            <input
+              type="file"
+              id="avatar"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium"
+              >Nouveau mot de passe</label
+            >
+            <input
+              type="password"
+              id="password"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="confirm" class="block text-sm font-medium"
+              >Confirmer mot de passe</label
+            >
+            <input
+              type="password"
+              id="confirm"
+              class="w-full border border-gray-300 px-3 py-2 rounded"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded underline"
+          >
+            Sauvegarder
+          </button>
+        </form>
+      </main>
+      <footer class="border-t border-gray-300">
+        <div class="container mx-auto px-4 py-4 text-center">
+          <a
+            href="08-aide.html"
+            class="underline hover:bg-gray-100 px-2 py-1 rounded"
+            >Centre d’aide</a
+          >
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

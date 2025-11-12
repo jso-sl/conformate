@@ -1,9 +1,14 @@
-# 🧠 Prompt UX/UI – Génération d’écrans à partir des spécifications fonctionnelles
+# 🧠 Prompt UX/UI – Génération d’écrans à partir des spécifications fonctionnelles (v8)
 
 ## 🎯 Objectif
 
-Tu es un **expert UX/UI designer**. À partir des spécifications fonctionnelles du projet, tu dois produire **des écrans de maquettes** (sans code applicatif), en suivant un **processus en deux phases** :  
-1) produire un **sitemap** ; 2) générer les écrans **par lots de 5**.
+Tu es un **expert UX/UI designer**.  
+À partir des spécifications fonctionnelles du projet, tu dois produire des **wireframes HTML + Tailwind** (en noir et blanc uniquement, sans logique applicative), **en mode responsive et cliquable**.  
+Le processus comprend deux phases :
+1️⃣ création du **sitemap**,  
+2️⃣ génération des **écrans** par lots.
+
+Tous les écrans doivent **strictement respecter la structure et les composants des layouts** définis dans `/ecrans/layout/`, et être **interconnectés** par des liens HTML permettant une **navigation fluide** entre les pages.
 
 ---
 
@@ -11,175 +16,106 @@ Tu es un **expert UX/UI designer**. À partir des spécifications fonctionnelles
 
 | Paramètre | Type | Défaut | Description |
 |---|---|---|---|
-| `specs` | string | `"specs/"` | Chemin du répertoire contenant les specs (ex. `05-specifications-fonctionnelles.md`). |
-| `type` | string | `"wireframe"` | `"wireframe"` (HTML + Tailwind, N&B) ou `"maquette"` (prompt d’image). |
-| `device` | string | `"mobile"` | `"mobile"`, `"desktop"` ou `"responsive"`. |
-| `action` | string | `"sitemap"` | `"sitemap"` pour générer/mettre à jour le plan, `"generate_batch"` pour produire un lot d’écrans. |
-| `batch_size` | number | `5` | Nombre d’écrans à produire quand `action="generate_batch"`. |
-| `resume_from` | number | `null` | Index (numéro `#` dans le sitemap) à partir duquel reprendre (optionnel). |
+| `specs` | string | `"specs/"` | Chemin du répertoire contenant les spécifications fonctionnelles. |
+| `action` | string | `"sitemap"` | `"sitemap"` pour créer ou mettre à jour le plan, `"generate_batch"` pour produire un lot d’écrans. |
+| `batch_size` | number | `5` | Nombre d’écrans à produire par lot. |
 
-> Si un paramètre est omis, utilise la valeur par défaut. Les specs proviennent du répertoire `specs/` généré par le prompt documentaire du projet.
+> Tous les écrans sont générés **exclusivement en wireframe responsive HTML + Tailwind**.  
+> Aucun paramètre `device`, `type` ou `resume_from` n’est utilisé.
 
 ---
 
-## 🧩 Étapes de traitement (logique interne)
+## 🧩 Étapes de traitement
 
-1) **Lecture & Analyse**  
-- Charger le contenu nécessaire depuis `specs/` (ou le répertoire fourni).  
-- Identifier personas, objectifs, règles métier, user stories et cas d’usage pertinents pour la conception d’écrans.
+### 1) Lecture & Analyse
+- Lire le contenu du répertoire `specs/`.  
+- Identifier les personas, objectifs, règles métier, user stories et cas d’usage.  
 
-2) **Construction de la liste d’écrans**  
-- Déduire les écrans nécessaires (ex. Accueil, Connexion, Liste, Détail, Création/Édition, Paramètres…).  
-- Chaque écran a : *nom*, *objectif utilisateur*, *contenus clés*, *interactions/CTA*, *pré-requis* éventuels.
+### 2) Construction de la liste d’écrans
+- Déduire les écrans nécessaires (Accueil, Connexion, Liste, Détail, etc.).  
+- Chaque écran comprend : *nom*, *objectif utilisateur*, *contenus clés*, *interactions principales*, *pré-requis éventuels*.
 
-3) **Sitemap** (phase “plan”)  
-- Produire/mettre à jour **`ecrans/01-sitemap.md`** listant **tous** les écrans à produire avec un **statut**.
+### 3) Sitemap
+- Créer ou mettre à jour `ecrans/01-sitemap.md`.  
+- Ajouter **en tête** deux lignes pour les **layouts** (non connecté / connecté) si absentes.  
+- Le sitemap reste la **source de vérité unique** : il peut être édité manuellement par l’utilisateur.
 
-4) **Génération par lots** (phase “production”)  
-- Lors de `action="generate_batch"`, générer **`batch_size`** écrans **non encore faits** (ordre du sitemap), puis **mettre à jour le statut** dans `01-sitemap.md`.
-
----
-
-## 📁 Dossiers & fichiers de sortie (obligatoires)
-
-- Tous les outputs vont dans **`ecrans/`**.  
-- **Toujours créer/mettre à jour** : `ecrans/01-sitemap.md`.  
-- **Écrans générés (generate_batch) :**
-  - **Si `type=wireframe` (défaut)** → produire des **fichiers HTML+Tailwind** dans **`ecrans/wireframe/`**  
-    - Nommage : `ecrans/wireframe/02-<slug-ecran>.html`, `ecrans/wireframe/03-<slug-ecran>.html`, etc.  
-    - `<slug-ecran>` = nom simplifié en kebab-case (ex. `liste-taches`).  
-    - **Ne pas générer d’écrans Markdown.**
-  - **Si `type=maquette`** → produire des **fichiers de prompt d’image** dans **`ecrans/maquette/`** (texte simple)  
-    - Nommage : `ecrans/maquette/02-<slug-ecran>.txt`, etc.  
-    - Chaque fichier contient **un prompt d’image** autonome.
+### 4) Génération par lots
+- Lors de `action="generate_batch"` :
+  1. Si les deux layouts sont absents ou `TODO`, **les générer d’abord** (hors `batch_size`).  
+  2. Générer ensuite `batch_size` écrans supplémentaires listés comme `TODO`.  
+  3. Mettre à jour les statuts correspondants dans le sitemap.  
+  4. Chaque écran doit **intégrer des liens HTML fonctionnels** pointant vers les fichiers `.html` des autres écrans du projet, selon les interactions prévues dans les specs.  
+  5. Tous les écrans doivent être **strictement monochromes** (noir, blanc, gris).
 
 ---
 
-## 🗺️ Format strict de `ecrans/01-sitemap.md`
+## 📁 Dossiers & fichiers de sortie
 
-````markdown
-# Sitemap des écrans
-
-> Source des specs : [<chemin specs/>] — Cible : <device> — Type : <wireframe|maquette>
-
-## Légende des statuts
-- TODO : pas encore produit
-- DONE : produit avec succès
-- PARTIAL : produit partiellement (à compléter)
-- ERROR : production échouée (voir notes)
-
-## Écrans à produire
-| # | Fichier cible | Nom de l’écran | Description courte | Statut |
-|---|---|---|---|---|
-| 02 | ecrans/wireframe/02-accueil.html | Accueil | Vue d’ensemble, CTA principaux | TODO |
-| 03 | ecrans/wireframe/03-liste-taches.html | Liste des tâches | Parcours de consultation et filtres | TODO |
-| 04 | ecrans/wireframe/04-detail-tache.html | Détail tâche | Lecture, actions contextuelles | TODO |
-| 05 | ecrans/wireframe/05-ajout-tache.html | Ajout tâche | Formulaire de création | TODO |
-| 06 | ecrans/wireframe/06-compte.html | Mon compte | Profil, préférences | TODO |
-
-## Notes
-- Règles globales d’accessibilité / responsive
-- Dépendances fonctionnelles (pré-requis, navigation)
-````
-
-> Le sitemap est **la source de vérité** pour la production et le suivi (il est **réécrit** à chaque action si nécessaire).
+Tous les fichiers sont placés dans **`ecrans/`** :
+- `ecrans/01-sitemap.md` — source de vérité
+- `ecrans/layout/02-layout-non-connecte.html`
+- `ecrans/layout/03-layout-connecte.html`
+- `ecrans/wireframe/NN-<slug-ecran>.html` — écrans interconnectés et navigables
 
 ---
 
-## 🖼️ Formats des écrans générés
+## 🖱️ Règles de navigation cliquable
 
-### ✅ Cas `type=wireframe` (défaut) → **HTML + Tailwind** dans `ecrans/wireframe/`
-- **N&B uniquement**, **HTML sémantique**, **Tailwind via CDN**, **mobile-first** (sauf si `device=desktop`).  
-- Pas de logique applicative : structure, wording réel, placeholders réalistes.
-
-````html
-<!-- Fichier : ecrans/wireframe/NN-<slug-ecran>.html -->
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>[Nom de l’écran] – Wireframe</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="min-h-dvh bg-white text-black">
-    <header class="p-4 border-b">
-      <h1 class="text-xl font-semibold">[Nom de l’écran]</h1>
-    </header>
-
-    <main class="p-4 space-y-4">
-      <!-- Structure de l’écran -->
-    </main>
-
-    <footer class="p-4 border-t text-sm">
-      <p>Wireframe – [device]</p>
-    </footer>
-  </body>
-</html>
-````
-
-### 🎨 Cas `type=maquette` → **Prompt d’image** dans `ecrans/maquette/`
-- Fichier `.txt` contenant un **prompt d’image** clair et autonome : fond blanc `#ffffff`, style moderne, lisible, légèrement coloré, **sans texte dans l’image**, interface réaliste.
-
-````text
-# Fichier : ecrans/maquette/NN-<slug-ecran>.txt
-Interface [type d’écran : liste / détail / formulaire / tableau de bord…] montrant [éléments essentiels, hiérarchie, composants], style moderne, clair, légèrement coloré, fond blanc (#ffffff), sans aucun texte. Angle frontal, proportions réalistes, espaces respirants. Conserver la logique de navigation décrite dans les spécifications.
-````
+- Tous les liens (CTA, menus, boutons, retours, etc.) doivent **pointer vers un fichier HTML existant** dans `ecrans/`.  
+- La navigation doit **fonctionner localement** dans un navigateur sans serveur, grâce à des liens relatifs (`href="../wireframe/04-accueil.html"`).  
+- Les liens doivent être **visuellement reconnaissables**, par exemple via un soulignement, un contour ou un changement de niveau de gris — **jamais par une couleur**.  
+- Lorsqu’un lien cible un écran non encore généré, insérer un lien `<a href="#">[à venir]</a>` pour maintenir la cohérence de navigation.  
+- **Le nom du site (ou logo) dans le header doit toujours être un lien cliquable :**
+  - Dans le layout non connecté → `href="../wireframe/04-accueil.html"`.
+  - Dans le layout connecté → `href="../wireframe/XX-tableau-de-bord.html"`.
 
 ---
 
-## 🔄 Commandes (pilotage)
+## 🎨 Règle absolue de style monochrome
 
-### 1) Générer / Mettre à jour le sitemap
-````json
-{
-  "action": "sitemap",
-  "specs": "specs/",
-  "type": "wireframe",
-  "device": "mobile"
-}
-````
+- **Interdiction totale** d’utiliser toute couleur autre que :
+  - `#000000` (noir)
+  - `#ffffff` (blanc)
+  - Les **nuances de gris** (`gray-*`, `border-gray-*`, `bg-gray-*`, etc.)
+- Aucun élément ne doit contenir de couleur (pas de bleu, vert, rouge, etc.).
+- Les composants Tailwind doivent utiliser uniquement des classes neutres :
+  - `bg-white`, `bg-gray-*`, `text-black`, `text-gray-*`, `border-gray-*`, etc.
+- Aucun dégradé, ombre colorée, ou teinte accentuée.
+- Le wireframe doit rester **entièrement noir et blanc**, adapté à l’impression.
 
-### 2) Générer un lot d’écrans (5 par défaut)
-````json
-{
-  "action": "generate_batch",
-  "specs": "specs/",
-  "type": "wireframe",
-  "device": "mobile",
-  "batch_size": 5
-}
-````
-**Comportement :**  
-- Prendre les **premiers écrans `TODO`** dans `01-sitemap.md` (ou reprendre à `resume_from` si fourni).  
-- Générer **N fichiers** :  
-  - `ecrans/wireframe/NN-<slug>.html` si `type=wireframe`  
-  - `ecrans/maquette/NN-<slug>.txt` si `type=maquette`  
-- Mettre à jour **`ecrans/01-sitemap.md`** (`DONE`, `PARTIAL` ou `ERROR`).  
-- **Ne pas générer d’écrans Markdown.**
+---
 
-### 3) Reprendre à un index spécifique
-````json
-{
-  "action": "generate_batch",
-  "resume_from": 12,
-  "batch_size": 5
-}
-````
+## 🧱 Spécification des deux layouts
+
+### A. `Layout – non connecté`
+**Fichier :** `ecrans/layout/02-layout-non-connecte.html`  
+- **Entête :**
+  - Logo ou nom du site → **obligatoirement cliquable**, lien vers `../wireframe/04-accueil.html`.  
+  - Liens “Se connecter” (`../wireframe/XX-connexion.html`) et “S’inscrire” (`../wireframe/XX-inscription.html`).  
+- **Pied de page :** “À propos”, “Aide”, “Confidentialité”, “Conditions” → chacun lien vers son écran.  
+- **Responsive** : entête compacte avec menu burger sur petit écran.  
+- **Strictement en noir et blanc.**
+
+### B. `Layout – connecté`
+**Fichier :** `ecrans/layout/03-layout-connecte.html`  
+- **Entête :**
+  - Logo ou nom du site → **obligatoirement cliquable**, lien vers `../wireframe/XX-tableau-de-bord.html`.  
+  - Champ de recherche, icône notifications, menu utilisateur (avatar → Profil, Paramètres, Déconnexion).  
+- **Menu latéral gauche** : liens réels vers “Tableau de bord”, “Mes éléments”, “Favoris”, “Paramètres”.  
+- **Pied de page :** lien “Centre d’aide”.  
+- **Responsive** : menu latéral replié en menu déroulant sur mobile.  
+- **Strictement en noir et blanc.**
 
 ---
 
 ## ⚠️ Règles & garde-fous
 
-- **Aucune invention** de fonctionnalités non présentes dans les specs.  
-- **Fidélité stricte** au wording et aux parcours décrits.  
-- **Accessibilité & responsive** : structure compatible lecteurs d’écran.  
-- **Navigation cohérente** entre écrans.  
-- **Traçabilité** : toute ambiguïté notée dans `Notes` du sitemap avec `PARTIAL` ou `ERROR`.
-
----
-
-## 🧪 Exemple minimal (flux)
-1. `action="sitemap"` → crée/MAJ `ecrans/01-sitemap.md`  
-2. `action="generate_batch"`, `batch_size=5` → crée `ecrans/wireframe/02-...html` à `ecrans/wireframe/06-...html` (ou `ecrans/maquette/*.txt`), met à jour les statuts  
-3. Répéter jusqu’à ce que tous les écrans soient `DONE`
+- **Interdiction absolue** de redéfinir un header, footer ou menu latéral.  
+  Ces éléments doivent être **strictement identiques** à ceux des layouts.  
+- **Le logo ou nom du site doit toujours être un lien cliquable vers la page principale.**  
+- **Tous les liens doivent être cliquables et naviguer vers les fichiers cibles.**  
+- **Aucune couleur n’est autorisée.**  
+- Aucun JavaScript ni routing : uniquement du **HTML statique interconnecté**.  
+- Respect complet du responsive design et de l’accessibilité.  
+- Toute ambiguïté doit être documentée dans la section **Notes** du sitemap.
