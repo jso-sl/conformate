@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accueil</title>
+    <title>Inscription</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -84,27 +84,54 @@
     </div>
 
     <!-- Main content -->
-    <main
-      class="p-4 min-h-screen flex flex-col items-center justify-center text-center"
-    >
-      <h1 class="text-3xl font-bold mb-4">
-        Bienvenue sur la Plateforme d’Évaluation Automatique
-      </h1>
-      <p class="mb-8 max-w-md">
-        Vérifiez la conformité de vos devis de rénovation énergétique selon les
-        checklists CEE.
-      </p>
-      <div class="space-x-4">
-        <a
-          href="05-connexion.html"
-          class="inline-block bg-gray-200 px-6 py-3 rounded underline"
-          >Se connecter</a
-        >
-        <a
-          href="06-inscription.html"
-          class="inline-block bg-gray-200 px-6 py-3 rounded underline"
-          >S’inscrire</a
-        >
+    <main class="p-4 min-h-screen flex items-center justify-center">
+      <div class="w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Inscription</h1>
+        <form class="space-y-4">
+          <div>
+            <label for="name" class="block mb-1">Nom</label>
+            <input
+              type="text"
+              id="name"
+              class="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="email" class="block mb-1">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="password" class="block mb-1">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              class="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="confirm-password" class="block mb-1"
+              >Confirmer mot de passe</label
+            >
+            <input
+              type="password"
+              id="confirm-password"
+              class="w-full border border-gray-300 p-2 rounded"
+            />
+          </div>
+          <a
+            href="05-connexion.html"
+            class="inline-block bg-gray-200 px-6 py-3 rounded underline w-full text-center"
+            >S’inscrire</a
+          >
+        </form>
+        <p class="mt-4 text-center">
+          Déjà un compte ?
+          <a href="05-connexion.html" class="underline">Se connecter</a>
+        </p>
       </div>
     </main>
 

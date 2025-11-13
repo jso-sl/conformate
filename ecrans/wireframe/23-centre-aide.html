@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layout Connecté</title>
+    <title>Centre d’aide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -81,9 +81,7 @@
     <header
       class="bg-gray-100 p-4 flex justify-between items-center relative md:ml-48"
     >
-      <a
-        href="../wireframe/11-tableau-de-bord.html"
-        class="text-lg font-bold underline"
+      <a href="11-tableau-de-bord.html" class="text-lg font-bold underline"
         >Plateforme CEE</a
       >
       <!-- Desktop header elements -->
@@ -98,13 +96,9 @@
         <div class="flex space-x-2">
           <span class="underline cursor-pointer">👤</span>
           <!-- Avatar -->
-          <a href="../wireframe/22-profil.html" class="underline">Profil</a>
-          <a href="../wireframe/21-parametres.html" class="underline"
-            >Paramètres</a
-          >
-          <a href="../wireframe/05-connexion.html" class="underline"
-            >Déconnexion</a
-          >
+          <a href="22-profil.html" class="underline">Profil</a>
+          <a href="21-parametres.html" class="underline">Paramètres</a>
+          <a href="05-connexion.html" class="underline">Déconnexion</a>
         </div>
       </div>
       <!-- Mobile hamburger -->
@@ -123,32 +117,50 @@
     <!-- Desktop Sidebar -->
     <aside class="sidebar hidden md:block">
       <nav>
-        <a href="../wireframe/11-tableau-de-bord.html">Tableau de bord</a>
-        <a href="../wireframe/12-importer-documents.html">Mes éléments</a>
-        <a href="#">Favoris</a>
-        <a href="../wireframe/21-parametres.html">Paramètres</a>
+        <a href="11-tableau-de-bord.html">Tableau de bord</a>
+        <a href="12-importer-documents.html">Mes éléments</a>
+        <a href="#">[à venir]</a>
+        <a href="21-parametres.html">Paramètres</a>
       </nav>
     </aside>
 
     <!-- Mobile menu panel -->
     <div class="menu-panel md:hidden">
-      <a href="../wireframe/11-tableau-de-bord.html">Tableau de bord</a>
-      <a href="../wireframe/12-importer-documents.html">Mes éléments</a>
-      <a href="#">Favoris</a>
-      <a href="../wireframe/21-parametres.html">Paramètres</a>
+      <a href="11-tableau-de-bord.html">Tableau de bord</a>
+      <a href="12-importer-documents.html">Mes éléments</a>
+      <a href="#">[à venir]</a>
+      <a href="21-parametres.html">Paramètres</a>
     </div>
 
     <!-- Main content -->
     <main class="main-content p-4">
-      <!-- Contenu de la page ici -->
-      <p>Contenu de la page</p>
+      <h1 class="text-2xl font-bold mb-6">Centre d’aide</h1>
+      <h2 class="text-xl font-semibold mb-4">FAQ</h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-medium">Comment importer un devis ?</h3>
+          <p>Allez dans "Mes éléments" et sélectionnez votre fichier PDF.</p>
+        </div>
+        <div>
+          <h3 class="font-medium">Qu'est-ce qu'une checklist CEE ?</h3>
+          <p>
+            Une liste de critères réglementaires pour les travaux de rénovation
+            énergétique.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-medium">Comment contacter le support ?</h3>
+          <p>Envoyez un email à support@plateforme-cee.fr</p>
+        </div>
+      </div>
+      <h2 class="text-xl font-semibold mb-4 mt-6">Contact</h2>
+      <p>Email : support@plateforme-cee.fr</p>
+      <p>Téléphone : 01 23 45 67 89</p>
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-100 p-4 text-center md:ml-48">
-      <a href="../wireframe/23-centre-aide.html" class="underline"
-        >Centre d’aide</a
-      >
+      <a href="23-centre-aide.html" class="underline">Centre d’aide</a>
     </footer>
   </body>
 </html>

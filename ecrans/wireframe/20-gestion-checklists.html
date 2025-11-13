@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layout Connecté</title>
+    <title>Gestion checklists</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -81,9 +81,7 @@
     <header
       class="bg-gray-100 p-4 flex justify-between items-center relative md:ml-48"
     >
-      <a
-        href="../wireframe/11-tableau-de-bord.html"
-        class="text-lg font-bold underline"
+      <a href="11-tableau-de-bord.html" class="text-lg font-bold underline"
         >Plateforme CEE</a
       >
       <!-- Desktop header elements -->
@@ -98,13 +96,9 @@
         <div class="flex space-x-2">
           <span class="underline cursor-pointer">👤</span>
           <!-- Avatar -->
-          <a href="../wireframe/22-profil.html" class="underline">Profil</a>
-          <a href="../wireframe/21-parametres.html" class="underline"
-            >Paramètres</a
-          >
-          <a href="../wireframe/05-connexion.html" class="underline"
-            >Déconnexion</a
-          >
+          <a href="22-profil.html" class="underline">Profil</a>
+          <a href="21-parametres.html" class="underline">Paramètres</a>
+          <a href="05-connexion.html" class="underline">Déconnexion</a>
         </div>
       </div>
       <!-- Mobile hamburger -->
@@ -123,32 +117,64 @@
     <!-- Desktop Sidebar -->
     <aside class="sidebar hidden md:block">
       <nav>
-        <a href="../wireframe/11-tableau-de-bord.html">Tableau de bord</a>
-        <a href="../wireframe/12-importer-documents.html">Mes éléments</a>
-        <a href="#">Favoris</a>
-        <a href="../wireframe/21-parametres.html">Paramètres</a>
+        <a href="11-tableau-de-bord.html">Tableau de bord</a>
+        <a href="12-importer-documents.html">Mes éléments</a>
+        <a href="#">[à venir]</a>
+        <a href="21-parametres.html">Paramètres</a>
       </nav>
     </aside>
 
     <!-- Mobile menu panel -->
     <div class="menu-panel md:hidden">
-      <a href="../wireframe/11-tableau-de-bord.html">Tableau de bord</a>
-      <a href="../wireframe/12-importer-documents.html">Mes éléments</a>
-      <a href="#">Favoris</a>
-      <a href="../wireframe/21-parametres.html">Paramètres</a>
+      <a href="11-tableau-de-bord.html">Tableau de bord</a>
+      <a href="12-importer-documents.html">Mes éléments</a>
+      <a href="#">[à venir]</a>
+      <a href="21-parametres.html">Paramètres</a>
     </div>
 
     <!-- Main content -->
     <main class="main-content p-4">
-      <!-- Contenu de la page ici -->
-      <p>Contenu de la page</p>
+      <h1 class="text-2xl font-bold mb-6">Gestion des checklists</h1>
+      <a
+        href="#"
+        class="inline-block bg-gray-200 px-6 py-3 rounded underline mb-4"
+        >[à venir] Ajouter checklist</a
+      >
+      <table class="w-full border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 p-2">Nom</th>
+            <th class="border border-gray-300 p-2">Type</th>
+            <th class="border border-gray-300 p-2">Critères</th>
+            <th class="border border-gray-300 p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2">CEE Isolation</td>
+            <td class="border border-gray-300 p-2">Isolation</td>
+            <td class="border border-gray-300 p-2">10</td>
+            <td class="border border-gray-300 p-2">
+              <a href="#" class="underline">[à venir] Modifier</a> |
+              <a href="#" class="underline">[à venir] Supprimer</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2">CEE Chauffage</td>
+            <td class="border border-gray-300 p-2">Chauffage</td>
+            <td class="border border-gray-300 p-2">8</td>
+            <td class="border border-gray-300 p-2">
+              <a href="#" class="underline">[à venir] Modifier</a> |
+              <a href="#" class="underline">[à venir] Supprimer</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-100 p-4 text-center md:ml-48">
-      <a href="../wireframe/23-centre-aide.html" class="underline"
-        >Centre d’aide</a
-      >
+      <a href="23-centre-aide.html" class="underline">Centre d’aide</a>
     </footer>
   </body>
 </html>
