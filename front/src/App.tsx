@@ -1,5 +1,5 @@
-import PublicLayout from "./layouts/PublicLayout";
-import HomePage from "./pages/public/HomePage";
+import PublicLayout from './layouts/PublicLayout';
+import HomePage from './pages/public/HomePage';
 
 function App() {
   return (

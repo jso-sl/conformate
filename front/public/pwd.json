@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@conformate.fr",
+      "password": "admin123",
+      "role": "admin",
+      "firstName": "Administrateur",
+      "lastName": "Système",
+      "organization": "Conformate",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "username": "consultant",
+      "email": "consultant@example.com", 
+      "password": "consultant123",
+      "role": "consultant",
+      "firstName": "Jean",
+      "lastName": "Dupont",
+      "organization": "Cabinet Conseil",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "username": "auditeur",
+      "email": "auditeur@example.com",
+      "password": "audit123", 
+      "role": "auditeur",
+      "firstName": "Marie",
+      "lastName": "Martin",
+      "organization": "Société Audit",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "isActive": true
+    }
+  ]
+}

@@ -53,7 +53,7 @@ front/
       rules.ts         # présence, regex, numericRange, selection
       llm.ts           # appels OpenAI (facultatif)
       scoring.ts
-    /routes
+    /pages
     /styles
   index.html
   vite.config.ts
