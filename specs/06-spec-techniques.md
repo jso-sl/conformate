@@ -17,7 +17,7 @@ L’analyse utilise éventuellement l’API OpenAI directement côté client (cl
 - **Stockage local** : localForage (IndexedDB fallback localStorage)
 - **LLM (optionnel)** : OpenAI API (clé utilisateur locale)
 - **Extraction fichiers** : pdfjs-dist, mammoth, xlsx, tesseract.js (OCR)
-- **Génération de rapport PDF** : pdf-lib ou jsPDF
+- **Génération de rapport PDF** : jsPDF
 - **PWA** : manifest + service worker (mode offline)
 - **Déploiement** : GitHub Pages
 
@@ -107,7 +107,7 @@ score = \frac{\sum w_i \times v_i}{\sum w_i} \times 100
 ## 🧪 Qualité et tests
 
 - **Tests unitaires** : Vitest + React Testing Library
-- **E2E** : Playwright (parcours utilisateur complet)
+- **E2E** : Cypress (parcours utilisateur complet)
 - **Audit Lighthouse** : performances, accessibilité, PWA
 - **Lint & Format** : ESLint + Prettier
 
