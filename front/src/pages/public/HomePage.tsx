@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   return (
@@ -14,18 +15,18 @@ const HomePage: React.FC = () => {
           checklists CEE.
         </p>
         <div className="space-x-4">
-          <a
-            href="/connexion"
+          <Link
+            to="/login"
             className="inline-block bg-gray-200 px-6 py-3 rounded underline"
           >
             Se connecter
-          </a>
-          <a
-            href="/inscription"
+          </Link>
+          <Link
+            to="/signup"
             className="inline-block bg-gray-200 px-6 py-3 rounded underline"
           >
             S’inscrire
-          </a>
+          </Link>
         </div>
       </main>
       {/* Footer supprimé, présent dans PublicLayout */}
