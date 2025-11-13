@@ -35,27 +35,28 @@ L’analyse utilise éventuellement l’API OpenAI directement côté client (cl
 ## 🗂️ Structure du projet
 
 ```
-/src
-  /components        # UI (Uploader, Gauge, FindingsTable, PdfViewer)
-  /features
-    /projects        # gestion des projets
-    /analysis        # pipeline d’analyse (workers, scoring)
-    /checklists      # CRUD local
-    /reports         # génération de rapports
-  /workers
-    ocr.worker.ts
-    pdf.worker.ts
-  /lib
-    storage.ts       # gestion localForage
-    extractors.ts    # PDF/DOCX/XLSX
-    normalize.ts     # unités, nombres, dates
-    rules.ts         # présence, regex, numericRange, selection
-    llm.ts           # appels OpenAI (facultatif)
-    scoring.ts
-  /routes
-  /styles
-index.html
-vite.config.ts
+front/
+  /src
+    /components        # UI (Uploader, Gauge, FindingsTable, PdfViewer)
+    /features
+      /projects        # gestion des projets
+      /analysis        # pipeline d’analyse (workers, scoring)
+      /checklists      # CRUD local
+      /reports         # génération de rapports
+    /workers
+      ocr.worker.ts
+      pdf.worker.ts
+    /lib
+      storage.ts       # gestion localForage
+      extractors.ts    # PDF/DOCX/XLSX
+      normalize.ts     # unités, nombres, dates
+      rules.ts         # présence, regex, numericRange, selection
+      llm.ts           # appels OpenAI (facultatif)
+      scoring.ts
+    /routes
+    /styles
+  index.html
+  vite.config.ts
 ```
 
 ---
